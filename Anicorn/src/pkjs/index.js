@@ -1,28 +1,18 @@
 Pebble.addEventListener('appmessage', function(e) {
-  if (e.payload['FETCH_COMMAND']) {
-    fetchData();
+  var dict = e.payload;
+
+  if (dict['TRANSCRIPTION']) {
+    var textReceived = dict['TRANSCRIPTION'];
+    console.log('El usuario dijo: ' + textReceived);
+    
+    // Aquí es donde llamas a tu API externa pasando el texto
+    callMyApi(textReceived);
   }
 });
 
-function fetchData() {
-  var url = 'https://jsonplaceholder.typicode.com/todos/' + Math.floor(Math.random() * 20 + 1);
-
-  var xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    var json = JSON.parse(this.responseText);
-    
-    // Enviamos el título y también un estado de éxito
-    Pebble.sendAppMessage({
-      'DATA_KEY': json.title
-    });
-  };
+function callMyApi(query) {
+  // Ejemplo: Enviar a una API que procesa lenguaje natural
+  console.log("Enviando a la API: " + query);
   
-  xhr.onerror = function() {
-    Pebble.sendAppMessage({
-      'DATA_KEY': "Error de conexión"
-    });
-  };
-  
-  xhr.open('GET', url);
-  xhr.send();
+  // fetch('https://tu-api.com/v1/process?q=' + encodeURIComponent(query)) ...
 }

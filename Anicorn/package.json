@@ -23,7 +23,8 @@
     },
     "messageKeys": [
       "DATA_KEY",
-      "FETCH_COMMAND"
+      "FETCH_COMMAND",
+      "TRANSCRIPTION"
     ],
     "resources": {
       "media": []

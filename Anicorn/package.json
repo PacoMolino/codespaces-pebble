@@ -22,7 +22,8 @@
       "watchface": false
     },
     "messageKeys": [
-      "dummy"
+      "DATA_KEY",
+      "FETCH_COMMAND"
     ],
     "resources": {
       "media": []
